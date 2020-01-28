@@ -1,11 +1,11 @@
 
 LINES = [
-
-  {'type': 'mrt', 'name': 'east-west', 'ref': 'ew', 'id': 445764},
-  {'type': 'mrt', 'name': 'north-south', 'ref': 'ns', 'id': 445768},
-  {'type': 'mrt', 'name': 'north-east', 'ref': 'ne', 'id': 2293545},
-  {'type': 'mrt', 'name': 'circle', 'ref': 'cc', 'id': 2076291},
-  {'type': 'mrt', 'name': 'downtown', 'ref': 'dt', 'id': 2313458},
+  {'type': 'mrt', 'name': 'east-west', 'ref': 'ew', 'color': '', 'id': 445764},
+  {'type': 'mrt', 'name': 'north-south', 'ref': 'ns', 'color': '', 'id': 445768},
+  {'type': 'mrt', 'name': 'north-east', 'ref': 'ne', 'color': '', 'id': 2293545},
+  {'type': 'mrt', 'name': 'circle', 'ref': 'cc', 'color': '', 'id': 2076291},
+  {'type': 'mrt', 'name': 'downtown', 'ref': 'dt', 'color': '', 'id': 2313458},
+  # TODO add tec line and more
 
   # {'ref': 'bp', 'id': 1159434},
   # {'ref': 'sw', 'id': 1146941},
