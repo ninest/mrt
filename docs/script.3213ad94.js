@@ -5,4 +5,4 @@ module.exports=[{ref:"ew",color:"#00ff00",points:[[["103.6379938","1.3434129"],[
 },{}],"p7kT":[function(require,module,exports) {
 "use strict";var o=require("./functions.js"),n=t(require("./../data/lines.json"));function t(o){return o&&o.__esModule?o:{default:o}}mapboxgl.accessToken="pk.eyJ1IjoidGhlbWluZHN0b3JtIiwiYSI6ImNqemI5dTE4czAzM20zb3BsYzAzaDVrOXAifQ.SydstlfTME2vjERTmPo3XA";var e=new mapboxgl.Map({container:"map",style:"mapbox://styles/themindstorm/ck5ui9vow1mei1inw89olbhs5/draft",center:[103.8,1.351],zoom:11});e.on("load",function(){e.addControl(new mapboxgl.GeolocateControl({positionOptions:{enableHighAccuracy:!0},trackUserLocation:!0})),e.addControl(new mapboxgl.NavigationControl),n.default.forEach(function(n){n.points.forEach(function(t,a){setInterval(function(){e.addLayer((0,o.mrtLine)(n.ref+Math.random().toString(),t,n.color))},75*a)})})});
 },{"./functions.js":"REI2","./../data/lines.json":"f6eM"}]},{},["p7kT"], null)
-//# sourceMappingURL=mrt/script.3213ad94.js.map
+//# sourceMappingURL=/mrt/script.3213ad94.js.map
