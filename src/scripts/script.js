@@ -31,12 +31,15 @@ map.on('load', () => {
     // console.log(line.color)
 
     line.points.forEach((sub_line, i) => {
-      map.addLayer(mrtLine(
-        line.ref + Math.random().toString(),
-        sub_line,
-        line.color
-      ))
+      setInterval(() => {
+        map.addLayer(mrtLine(
+          line.ref + Math.random().toString(),
+          sub_line,
+          line.color
+        ))
+      }, 75 * i)
     })
+
   })
 
 
