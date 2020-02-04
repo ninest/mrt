@@ -24,3 +24,29 @@ export function mrtLine(id, coords, color) {
     }
   }
 }
+
+export function stationNames(allStations) {
+  // adds all station names for a line
+  var stationPoints = {
+    'type': 'FeatureCollection',
+    'features': []
+  }
+
+  // https://docs.mapbox.com/mapbox-gl-js/example/variable-label-placement/
+  allStations.forEach((station) => {
+    // console.log(station)
+    stationPoints.features.push({
+      'type': 'Feature',
+      'properties': {
+        'description': station.name,
+        // 'icon': 'circle-'
+      },
+      'geometry': {
+        'type': 'Point',
+        'coordinates': [station.lon, station.lat]
+      }
+    })
+  })
+
+  return stationPoints
+}

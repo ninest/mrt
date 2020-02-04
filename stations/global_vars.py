@@ -13,14 +13,14 @@ LINES = [
   
   # TODO add tec line and more
 
-  {'type': 'lrt', 'ref': 'bp', 'color': '#333333', 'code': 1159434},
-  {'type': 'lrt', 'ref': 'sw', 'color': '#333333', 'code': 1146941},
-  {'type': 'lrt', 'ref': 'se', 'color': '#333333', 'code': 2312985},
-  {'type': 'lrt', 'ref': 'pw', 'color': '#333333', 'code': 2312984},
-  {'type': 'lrt', 'ref': 'pe', 'color': '#333333', 'code': 1146942},
-  {'type': 'lrt', 'ref': 'cg', 'color': '#333333', 'code': 2313372},
+  # {'type': 'lrt', 'ref': 'bp', 'color': '#333333', 'code': 1159434},
+  # {'type': 'lrt', 'ref': 'sw', 'color': '#333333', 'code': 1146941},
+  # {'type': 'lrt', 'ref': 'se', 'color': '#333333', 'code': 2312985},
+  # {'type': 'lrt', 'ref': 'pw', 'color': '#333333', 'code': 2312984},
+  # {'type': 'lrt', 'ref': 'pe', 'color': '#333333', 'code': 1146942},
+  # {'type': 'lrt', 'ref': 'cg', 'color': '#333333', 'code': 2313372},
 
-  {'type': 'sentosa', 'ref': 's', 'color': '#333333', 'code': 2353581},
+  # {'type': 'sentosa', 'ref': 's', 'color': '#333333', 'code': 2353581},
 
   # New york? https://wiki.openstreetmap.org/wiki/New_York_City_Subway
   # {'type': 'ny', 'name': 'a', 'ref': 'a', 'color': '#0000ff', 'code': 9709546},
