@@ -23,6 +23,8 @@ for line in LINES:
       **stations.return_stations()
     })
 
+
+
 # create file if not exists
 f = open('src/data/lines.json', 'w')
 with open('src/data/lines.json', 'w') as outfile: 

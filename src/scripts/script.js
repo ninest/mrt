@@ -61,11 +61,15 @@ map.on('load', () => {
 
 
         // HTML elem for station pill
-        let refsForStation = refs[name]
+        let refsForStation = refs.stations[name]
         var refsHTML = ``
         try {
           refsForStation.forEach((ref) => {
-            refsHTML += `<div class='ref' style="background-color: ${line.color}"> ${ref} </div>`
+            let lineRef =  ref.substring(0,2).toLowerCase() // ew or ns ...
+            console.log(lineRef)
+            let color = refs.colors[lineRef]
+            console.log(color)
+            refsHTML += `<div class='ref' style="background-color: ${color}"> ${ref} </div>`
           })
         } catch {
           // TODO?
