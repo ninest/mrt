@@ -7,7 +7,7 @@ var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/themindstorm/ck5ui9vow1mei1inw89olbhs5/draft',
   center: [103.8, 1.351], // starting position [lng, lat]
-  zoom: 11 // starting zoom
+  zoom: 10 // starting zoom
 });
 
 map.on('load', () => {
@@ -38,7 +38,6 @@ map.on('load', () => {
 
   // add points to mark each train stations
   lines.forEach((line) => {
-    console.log(line)
 
     line.stations.forEach((station) => {
       let name = station.name
@@ -50,6 +49,7 @@ map.on('load', () => {
         // create HTML elemnt for station name
         var stationNameDisplay = document.createElement('div')
         stationNameDisplay.className = 'station-name'
+        stationNameDisplay.style.display = 'none'
         stationNameDisplay.innerHTML = `
           ${name}
           <div class="spacer"></div>
@@ -66,9 +66,7 @@ map.on('load', () => {
         try {
           refsForStation.forEach((ref) => {
             let lineRef =  ref.substring(0,2).toLowerCase() // ew or ns ...
-            console.log(lineRef)
             let color = refs.colors[lineRef]
-            console.log(color)
             refsHTML += `<div class='ref' style="background-color: ${color}"> ${ref} </div>`
           })
         } catch {
@@ -79,6 +77,7 @@ map.on('load', () => {
         var stationPill = document.createElement('div')
         stationPill.className = 'station-pill'
         stationPill.innerHTML = refsHTML
+        stationPill.style.display = 'none'
 
         new mapboxgl.Marker(stationPill)
           .setLngLat([station.lon, station.lat])
@@ -109,7 +108,7 @@ function zoomChange() {
   // only show dots
   if (currentZoom < 12) {
     hideByClass('station-name')
-    hideByClass('station-pill')
+    hideByClass('ref')
     showByClass('station-marker')
   }
 
@@ -117,11 +116,12 @@ function zoomChange() {
   // only show pill 
   if (currentZoom > 12) {
     showByClass('station-name')
-    showByClass('station-pill')
+    showByClass('ref')
     hideByClass('station-marker')
   }
 
   // high zoom level, show station names and pills
   // if 
 }
+zoomChange()
 map.on('zoom', zoomChange)

@@ -46,9 +46,18 @@
         margin: 0;
         padding: 0;
       }
-        .station-pill .ref {
-          padding: 5px;
-
+        .ref {
+          padding: 0 9px;
+          display: none;
+        }
+        .ref:first-of-type {
+          border-radius: 5px 0 0 5px;
+        }
+        .ref:last-of-type {
+          border-radius: 0 5px 5px 0;
+        }
+        .ref:only-child {
+          border-radius: 5px;
         }
 
     </style>
