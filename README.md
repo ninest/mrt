@@ -13,4 +13,4 @@
 
 The code can be used to map out any metro/railway line as long as the data is on OpenStreetMap. Singapore's MRT data can be found [here](https://wiki.openstreetmap.org/wiki/Mass_Rapid_Transit_(Singapore)).
 
-The file `global_vars.py' can be edited, and any railway relation from OpenStreetMap can be added.
+The file `global_vars.py` can be edited, and any railway relation from OpenStreetMap can be added.
