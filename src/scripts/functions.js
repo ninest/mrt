@@ -50,3 +50,17 @@ export function stationNames(allStations) {
 
   return stationPoints
 }
+
+export function hideByClass(className) {
+  var hideDivs = document.getElementsByClassName(className)
+  for (var i=0; i<hideDivs.length; i++) {
+    hideDivs[i].style.display = 'none'
+  }
+}
+
+export function showByClass(className) {
+  var hideDivs = document.getElementsByClassName(className)
+  for (var i=0; i<hideDivs.length; i++) {
+    hideDivs[i].style.display = 'block'
+  }
+}

@@ -1,5 +1,6 @@
-import { mrtLine, stationNames } from './functions.js'
+import { mrtLine, stationNames, hideByClass, showByClass } from './functions.js'
 import lines from './../data/lines.json'
+import refs from './../data/refs.json'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhlbWluZHN0b3JtIiwiYSI6ImNqemI5dTE4czAzM20zb3BsYzAzaDVrOXAifQ.SydstlfTME2vjERTmPo3XA';
 var map = new mapboxgl.Map({
@@ -31,35 +32,92 @@ map.on('load', () => {
     })
   })
 
+  // don't want to write a station name twice
+  // This happens to interchanges, so makeing a counter
+  var stationsAdded = []
+
   // add points to mark each train stations
   lines.forEach((line) => {
-    var stationGeoJson = stationNames(line.stations)
-    console.log(stationGeoJson)
+    console.log(line)
 
-    stationGeoJson.features.forEach((station) => {
-      // create HTML elem
-      var stationNameDisplay = document.createElement('div')
-      stationNameDisplay.className = 'station-name'
-      stationNameDisplay.innerHTML = `
-        ${station.properties.description}
-        <div class="spacer"></div>
-      `
+    line.stations.forEach((station) => {
+      let name = station.name
+      // make sure labels are not doubled
+      // adding dot and pill
+      if (! stationsAdded.includes(name)) {
+        stationsAdded.push(name)
 
+        // create HTML elemnt for station name
+        var stationNameDisplay = document.createElement('div')
+        stationNameDisplay.className = 'station-name'
+        stationNameDisplay.innerHTML = `
+          ${name}
+          <div class="spacer"></div>
+        `
+        new mapboxgl.Marker(stationNameDisplay)
+        .setLngLat([station.lon, station.lat])
+        .addTo(map)
+
+
+
+        // HTML elem for station pill
+        let refsForStation = refs[name]
+        var refsHTML = ``
+        try {
+          refsForStation.forEach((ref) => {
+            refsHTML += `<div class='ref' style="background-color: ${line.color}"> ${ref} </div>`
+          })
+        } catch {
+          // TODO?
+          console.log('Undefined Error ...')
+        }
+
+        var stationPill = document.createElement('div')
+        stationPill.className = 'station-pill'
+        stationPill.innerHTML = refsHTML
+
+        new mapboxgl.Marker(stationPill)
+          .setLngLat([station.lon, station.lat])
+          .addTo(map)
+      }
+
+      // adding dot
       var stationMarkerDisplay = document.createElement('div')
       stationMarkerDisplay.className = 'station-marker'
       stationMarkerDisplay.style.backgroundColor = line.color
 
-      new mapboxgl.Marker(stationNameDisplay)
-        .setLngLat(station.geometry.coordinates)
-        .addTo(map)
       new mapboxgl.Marker(stationMarkerDisplay)
-        .setLngLat(station.geometry.coordinates)
+        .setLngLat([station.lon, station.lat])
         .addTo(map)
     })
   })
 })
 
-map.on('zoom', () => {
+
+
+function zoomChange() {
+  // prevZoom
   const currentZoom = map.getZoom()
   console.log(currentZoom)
-})
+
+  // low zoom level: 
+  // hide station names, pills with refs
+  // only show dots
+  if (currentZoom < 12) {
+    hideByClass('station-name')
+    hideByClass('station-pill')
+    showByClass('station-marker')
+  }
+
+  // medium low zoom level
+  // only show pill 
+  if (currentZoom > 12) {
+    showByClass('station-name')
+    showByClass('station-pill')
+    hideByClass('station-marker')
+  }
+
+  // high zoom level, show station names and pills
+  // if 
+}
+map.on('zoom', zoomChange)
