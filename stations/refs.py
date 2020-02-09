@@ -12,6 +12,10 @@ colors_dict = {}
 for line in LINES:
   colors_dict[line['ref']] = line['color']
 
+# hard coding for circle and ew extension :/
+colors_dict['cg'] = colors_dict['ew']
+colors_dict['ce'] = colors_dict['cc']
+
 headers = {
   "Accept": "application/json",
   "Content-Type": "application/json",
