@@ -5,9 +5,11 @@ import refs from './../data/refs.json'
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhlbWluZHN0b3JtIiwiYSI6ImNqemI5dTE4czAzM20zb3BsYzAzaDVrOXAifQ.SydstlfTME2vjERTmPo3XA';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/themindstorm/ck5ui9vow1mei1inw89olbhs5/draft',
+  style: 'mapbox://styles/themindstorm/ck5ui9vow1mei1inw89olbhs5?optimize=true',
   center: [103.8, 1.351], // starting position [lng, lat]
-  zoom: 10 // starting zoom
+  zoom: 10, // starting zoom
+  minZoom: 10,
+  maxZoom: 15,
 });
 
 map.on('load', () => {
@@ -89,9 +91,9 @@ map.on('load', () => {
       stationMarkerDisplay.className = 'station-marker'
       stationMarkerDisplay.style.backgroundColor = line.color
 
-      new mapboxgl.Marker(stationMarkerDisplay)
-        .setLngLat([station.lon, station.lat])
-        .addTo(map)
+      // new mapboxgl.Marker(stationMarkerDisplay)
+      //   .setLngLat([station.lon, station.lat])
+      //   .addTo(map)
     })
   })
 })
